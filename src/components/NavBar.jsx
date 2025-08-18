@@ -1,9 +1,15 @@
+'use client';
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '../../public/logo.png'
+import { useRouter } from 'next/navigation'
 
 const NavBar = () => {
+  const router = useRouter();
+  const handleBtn = ()=>{
+ router.push('https://live.lastingsales.com/en/register')
+  }
   return (
     <nav className="bg-white fixed w-full shadow-sm border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,14 +64,14 @@ const NavBar = () => {
 
           {/* Try it Free Button */}
           <div className="flex items-center">
-            <Link href="/try-free">
+          
               <button 
-                className="text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:opacity-90"
+              onClick={handleBtn}
+                className="text-white cursor-pointer font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:opacity-90"
                 style={{ backgroundColor: '#059574' }}
               >
                 Try it free
               </button>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
