@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation'
 const NavBar = () => {
   const router = useRouter();
   const handleBtn = ()=>{
+     router.push('https://live.lastingsales.com/en/register')
+
   }
   return (
     <nav className="bg-white fixed w-full shadow-sm border-b border-gray-200 z-50">
