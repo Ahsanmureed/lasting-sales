@@ -1,6 +1,12 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const Pricing = () => {
+  const router = useRouter();
+  const handleBtn  = ()=>{
+ router.push('https://live.lastingsales.com/en/register')
+  }
   const plans = [
     {
       name: "Starter",
@@ -118,7 +124,8 @@ const Pricing = () => {
               
               {/* CTA Button */}
               <button 
-                className={`w-full font-medium px-6 py-3 rounded-lg transition-all duration-200 ${
+              onClick={handleBtn}
+                className={`w-full cursor-pointer font-medium px-6 py-3 rounded-lg transition-all duration-200 ${
                   plan.popular 
                     ? 'text-white hover:opacity-90' 
                     : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
