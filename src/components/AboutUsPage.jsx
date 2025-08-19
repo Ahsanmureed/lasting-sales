@@ -1,10 +1,13 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import NavBar from '@/components/NavBar';
 import kashif from '../../public/Kashif-naeem-1024x1024.png'
 import Footer from '@/components/Footer';
+import { useRouter } from 'next/navigation';
 
 export default function SalesLandingPage() {
+  const router = useRouter();
   const achievements = [
     { src: '/9-1-768x598.png', alt: 'Startup Estonia' },
     { src: '/10-1-768x598.png', alt: 'NatWest Accelerator' },
@@ -35,11 +38,11 @@ export default function SalesLandingPage() {
             <p className="text-lg text-gray-600 mb-8">
               Responding within 5 minutes boosts lead qualification rates by 2x
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-teal-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
+            <div className="flex flex-col cursor-pointer sm:flex-row gap-4 justify-center">
+              <button onClick={()=> router.push('https://live.lastingsales.com/en/register')} className="bg-teal-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
                 Get Started
               </button>
-              <button className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+              <button onClick={()=> router.push('https://www.youtube.com/@lastingsales')} className="bg-orange-500 cursor-pointer text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
                 Learn More
               </button>
             </div>

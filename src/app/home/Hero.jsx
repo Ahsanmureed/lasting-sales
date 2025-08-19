@@ -23,23 +23,23 @@ const Hero = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8 justify-center lg:justify-start">
-              <Link href="/try-free">
+              <Link href="https://live.lastingsales.com/en/register">
                 <button 
-                  className="w-full sm:w-auto text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:opacity-90"
+                  className="w-full cursor-pointer sm:w-auto text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:opacity-90"
                   style={{ backgroundColor: '#059574' }}
                 >
                   Try it free
                 </button>
               </Link>
               
-              <Link href="/book-call">
-                <button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+              <Link href="https://calendly.com/kashif-lastingsales/30min">
+                <button className="w-full cursor-pointer sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                   Book a Call
                 </button>
               </Link>
               
-              <Link href="/user-guide">
-                <button className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-medium px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+              <Link href="https://www.youtube.com/@lastingsales">
+                <button className="w-full sm:w-auto cursor-pointer bg-red-500 hover:bg-red-600 text-white font-medium px-5 py-2.5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
                   User Guide
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />

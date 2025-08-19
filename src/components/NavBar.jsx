@@ -28,7 +28,7 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
-          <div className="flex items-center space-x-3">
+          <div onClick={()=> router.push('/')} className="flex cursor-pointer items-center space-x-3">
             <Image 
               src={logo} 
               alt="Lasting Sales Logo" 
@@ -77,31 +77,31 @@ const NavBar = () => {
               </div>
             </div>
 
-            <Link 
+            {/* <Link 
               href="/marketing-plan" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Marketing Plan
-            </Link>
+            </Link> */}
             <Link 
               href="/blogs" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Blog
             </Link>
-            <Link 
+            {/* <Link 
               href="/resources" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Resources
-            </Link>
+            </Link> */}
           </div>
 
           {/* Try it Free Button */}
           <div className="hidden md:flex items-center">
             <button 
               onClick={handleBtn}
-              className="text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82]"
+              className="text-white  cursor-pointer font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82]"
               style={{ backgroundColor: '#059574' }}
             >
               Try it free

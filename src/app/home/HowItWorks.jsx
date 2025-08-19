@@ -1,6 +1,9 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const HowItWorks = () => {
+  const router = useRouter();
   const steps = [
     {
       step: "01",
@@ -71,7 +74,8 @@ const HowItWorks = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <button 
-            className="text-white font-medium px-8 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:opacity-90"
+          onClick={()=> router.push('https://live.lastingsales.com/en/register')}
+            className="text-white cursor-pointer font-medium px-8 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:opacity-90"
             style={{ backgroundColor: '#059574' }}
           >
             Start Your Free Trial
