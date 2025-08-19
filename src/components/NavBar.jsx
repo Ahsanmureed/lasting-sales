@@ -84,7 +84,7 @@ const NavBar = () => {
               Marketing Plan
             </Link>
             <Link 
-              href="/blog" 
+              href="/blogs" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Blog
@@ -184,7 +184,7 @@ const NavBar = () => {
               Marketing Plan
             </Link>
             <Link 
-              href="/blog" 
+              href="/blogs" 
               className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
               onClick={toggleMobileMenu}
             >
