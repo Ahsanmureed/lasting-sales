@@ -1,16 +1,28 @@
 'use client';
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import logo from '../../public/logo.png'
-import { useRouter } from 'next/navigation'
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '../../public/logo.png';
+import { useRouter } from 'next/navigation';
 
 const NavBar = () => {
   const router = useRouter();
-  const handleBtn = ()=>{
-     router.push('https://live.lastingsales.com/en/register')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  }
+  const handleBtn = () => {
+    router.push('https://live.lastingsales.com/en/register');
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setOpenDropdown(null); // Reset dropdown when toggling menu
+  };
+
+  const toggleDropdown = (dropdown) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+  };
+
   return (
     <nav className="bg-white fixed w-full shadow-sm border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,64 +41,178 @@ const NavBar = () => {
             </span>
           </div>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/company" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Company
-            </Link>
-            <Link 
-              href="/industries" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Industries
-            </Link>
+            {/* Company Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center py-4">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                  Company
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+              <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
+                <Link href="/about-us" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">About Us</Link>
+                <Link href="/contact-us" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Contact Us</Link>
+                <Link href="/leadly-ai-agent" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Leadly AI Agent</Link>
+              </div>
+            </div>
+
+            {/* Industries Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center py-4">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                  Industries
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+              <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
+                <Link href="/crm-for-estate-agents" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Estate Agents</Link>
+                <Link href="/educational-trainers-coaches" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Educational Coaches</Link>
+                <Link href="/marketing-agencies" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Marketing Agencies</Link>
+              </div>
+            </div>
+
             <Link 
               href="/marketing-plan" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Marketing Plan
             </Link>
             <Link 
               href="/blog" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Blog
             </Link>
             <Link 
               href="/resources" 
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Resources
             </Link>
           </div>
 
           {/* Try it Free Button */}
-          <div className="flex items-center">
-          
-              <button 
+          <div className="hidden md:flex items-center">
+            <button 
               onClick={handleBtn}
-                className="text-white cursor-pointer font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:opacity-90"
-                style={{ backgroundColor: '#059574' }}
-              >
-                Try it free
-              </button>
+              className="text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82]"
+              style={{ backgroundColor: '#059574' }}
+            >
+              Try it free
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button className="text-gray-700 hover:text-gray-900 focus:outline-none">
+          <div className="md:hidden flex items-center">
+            <button 
+              onClick={toggleMobileMenu}
+              className="text-gray-700 hover:text-[#1E9F82] focus:outline-none"
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
               </svg>
             </button>
           </div>
         </div>
       </div>
-    </nav>
-  )
-}
 
-export default NavBar
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {/* Mobile Company Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => toggleDropdown('company')}
+                className="w-full flex justify-between items-center px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
+              >
+                <span>Company</span>
+                <svg 
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${openDropdown === 'company' ? 'transform rotate-180' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {openDropdown === 'company' && (
+                <div className="pl-4 py-2 space-y-1">
+                  <Link href="/about-us" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">About Us</Link>
+                  <Link href="/contact-us" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Contact Us</Link>
+                  <Link href="/leadly-ai-agent" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Leadly AI Agent</Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Industries Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => toggleDropdown('industries')}
+                className="w-full flex justify-between items-center px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
+              >
+                <span>Industries</span>
+                <svg 
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${openDropdown === 'industries' ? 'transform rotate-180' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {openDropdown === 'industries' && (
+                <div className="pl-4 py-2 space-y-1">
+                  <Link href="/crm-for-estate-agents" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Estate Agents</Link>
+                  <Link href="/educational-trainers-coaches" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Educational Coaches</Link>
+                  <Link href="/marketing-agencies" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Marketing Agencies</Link>
+                </div>
+              )}
+            </div>
+
+            <Link 
+              href="/marketing-plan" 
+              className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
+              onClick={toggleMobileMenu}
+            >
+              Marketing Plan
+            </Link>
+            <Link 
+              href="/blog" 
+              className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
+              onClick={toggleMobileMenu}
+            >
+              Blog
+            </Link>
+            <Link 
+              href="/resources" 
+              className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
+              onClick={toggleMobileMenu}
+            >
+              Resources
+            </Link>
+
+            {/* Mobile Try it Free Button */}
+            <div className="pt-2">
+              <button 
+                onClick={handleBtn}
+                className="w-full text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82]"
+                style={{ backgroundColor: '#059574' }}
+              >
+                Try it free
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default NavBar;

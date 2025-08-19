@@ -6,8 +6,11 @@ import HowItWorks from './home/HowItWorks'
 import Testimonials from './home/Testimonials'
 import Pricing from './home/Pricing'
 import Footer from '@/components/Footer'
-
+ export const metadata = {
+  title: "Home - LastingSales", 
+};
 const page = () => {
+ 
   return (
   <>
     <NavBar/>
