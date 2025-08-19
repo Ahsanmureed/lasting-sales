@@ -15,13 +15,9 @@ export const metadata = {
   title: "Lasting Sales",
   description: "Lasting Sales CRM",
   icons: {
-    icon: '/logo.png', 
-    shortcut: '/logo.png',
- 
-    other: {
-      rel: 'icon',
-      url: '/logo.png',
-    },
+    icon: "/favicon.ico",   // standard browsers
+    shortcut: "/logo.png",  // fallback
+    apple: "/logo.png",     // iOS/Apple devices
   },
 };
 
