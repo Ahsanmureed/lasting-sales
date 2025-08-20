@@ -7,7 +7,7 @@ import React from 'react'
      <div className="w-full ">
     <div className="bg-[#FDF1DF] rounded-xl p-6 mb-16 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
       <div>
-        <Image width={320} height={220} src="/left.png" alt="left" />
+        <Image width={320} height={220} src="/Left.png" alt="left" />
       </div>
       <div className="text-center md:text-right">
         <p className="text-[#2D3441] text-center text-[21px] font-[600] mb-2">
