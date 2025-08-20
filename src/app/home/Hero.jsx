@@ -5,7 +5,7 @@ import HeroImage from '../../../public/hero.png'
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-blue-50 min-h-[80vh] flex items-center pt-28 pb-8 md:pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#E6F8F3] min-h-[80vh] flex items-center pt-28 pb-8 md:pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Left Content */}
@@ -50,18 +50,19 @@ const Hero = () => {
           </div>
           
           {/* Right Image */}
-          <div className="flex-1 max-w-2xl w-full">
-            <div className="relative">
-              <Image 
-                src={HeroImage} 
-                alt="AI-powered lead management dashboard with Leadly robot assistant" 
-                className="w-full h-auto rounded-2xl shadow-2xl"
-                priority
-                width={800}
-                height={600}
-              />
-            </div>
-          </div>
+      <div className="flex-[1.5] w-full"> 
+  <div className="relative">
+    <Image 
+      src={HeroImage} 
+      alt="AI-powered lead management dashboard with Leadly robot assistant" 
+      className="rounded-2xl w-full h-auto"
+      priority
+      width={1200}
+      height={800}
+    />
+  </div>
+</div>
+
         </div>
       </div>
     </section>

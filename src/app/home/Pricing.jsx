@@ -9,55 +9,31 @@ const Pricing = () => {
   }
   const plans = [
     {
-      name: "Starter",
-      price: "$29",
+      name: "Monthly Plan",
+      price: "$12/per user",
       period: "/month",
-      description: "Perfect for small businesses getting started",
       features: [
-        "Up to 500 leads/month",
-        "Basic AI follow-up",
-        "Email integration",
-        "Standard analytics",
-        "Email support"
+      "Unlimited Leads",
+"10 Sales Pipelines & Stages",
+"1 GB Files storage",
+"Facebook Lead Ads & Web Forms Integration"
       ],
       popular: false,
-      buttonText: "Start Free Trial"
+      buttonText: "Try it free"
     },
     {
       name: "Professional", 
-      price: "$79",
+      price: "$70/ per user",
       period: "/month",
-      description: "Best for growing service businesses",
       features: [
-        "Up to 2,500 leads/month",
-        "Advanced AI automation",
-        "Multi-channel integration",
-        "Advanced analytics & reports",
-        "Priority support",
-        "Team collaboration",
-        "Custom workflows"
+       " Unlimited Leads",
+"15 Sales Pipelines & Stages",
+"2 GB Files storage",
+"Facebook Lead Ads & Web Forms Integration"
       ],
       popular: true,
-      buttonText: "Start Free Trial"
+      buttonText: "Try it free"
     },
-    {
-      name: "Enterprise",
-      price: "$199",
-      period: "/month", 
-      description: "For large teams and agencies",
-      features: [
-        "Unlimited leads",
-        "Enterprise AI features",
-        "White-label options",
-        "Advanced integrations",
-        "Dedicated account manager",
-        "Custom onboarding",
-        "API access",
-        "Advanced security"
-      ],
-      popular: false,
-      buttonText: "Contact Sales"
-    }
   ]
 
   return (
@@ -75,22 +51,15 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative ${
-                plan.popular ? 'ring-2 ring-emerald-600' : ''
+              className={` rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative ${
+                plan.popular ? 'bg-[#E6F8F3] ' : 'bg-white'
               }`}
             >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-emerald-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                    Most Popular
-                  </span>
-                </div>
-              )}
+             
               
               {/* Plan Name */}
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -138,15 +107,11 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Money Back Guarantee */}
-        <div className="text-center mt-12">
-          <p className="text-gray-600">
-            🛡️ 30-day money-back guarantee • Cancel anytime • No contracts
-          </p>
-        </div>
+      
       </div>
     </section>
   )
 }
 
 export default Pricing
+
