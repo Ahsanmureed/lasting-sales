@@ -89,12 +89,12 @@ const NavBar = () => {
             >
               Blog
             </Link>
-            {/* <Link 
+            <Link 
               href="/resources" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Resources
-            </Link> */}
+            </Link>
           </div>
 
           {/* Try it Free Button */}
