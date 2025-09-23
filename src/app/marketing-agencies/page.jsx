@@ -3,9 +3,23 @@
 
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
+import { fbPixel, gtag } from "@/lib/analytics";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Hero() {
+    useEffect(() => {
+      gtag.event({
+        action: "marketing_agencies_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Marketing Agencies Page",
+        content_category: "Landing"
+      });
+    }, []);
   
   return (
   <>

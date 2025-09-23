@@ -1,8 +1,23 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import React from "react";
+import { fbPixel, gtag } from "@/lib/analytics";
+import React, { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+    useEffect(() => {
+      gtag.event({
+        action: "privacy_policy_page_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Privacy Policy Page",
+        content_category: "Landing"
+      });
+    }, []);
   return (
    <>
 

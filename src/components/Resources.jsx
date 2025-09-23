@@ -5,8 +5,21 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import Link from "next/link";
+import { fbPixel, gtag } from "@/lib/analytics";
 
 const Resources = () => {
+    useEffect(() => {
+      gtag.event({
+        action: "home_page_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Home Page",
+        content_category: "Landing"
+      });
+    }, []);
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
 

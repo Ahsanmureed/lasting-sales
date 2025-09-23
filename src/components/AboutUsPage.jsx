@@ -1,12 +1,25 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import NavBar from '@/components/NavBar';
 import kashif from '../../public/Kashif-naeem-1024x1024.png'
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation';
+import { fbPixel, gtag } from '@/lib/analytics';
 
 export default function SalesLandingPage() {
+    useEffect(() => {
+      gtag.event({
+        action: "about_page_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "About Page",
+        content_category: "Landing"
+      });
+    }, []);
   const router = useRouter();
   const achievements = [
     { src: '/9-1-768x598.png', alt: 'Startup Estonia' },

@@ -5,7 +5,21 @@ import NavBar from "@/components/NavBar";
 import Image from "next/image";
 import { Calendar, Database, Share2, Tablet,DollarSign, ClipboardList, CheckSquare, Users, Phone, Facebook } from "lucide-react";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
+import { fbPixel, gtag } from "@/lib/analytics";
 export default function Hero() {
+    useEffect(() => {
+      gtag.event({
+        action: "estate_agent_page_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Estate Agent Page",
+        content_category: "Landing"
+      });
+    }, []);
     const benefits = [
     {
       icon: <DollarSign className="w-10 h-10 text-green-600" />,

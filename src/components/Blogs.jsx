@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BlogCard from '@/components/BlogCard';
 import NavBar from './NavBar';
+import { fbPixel, gtag } from '@/lib/analytics';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -24,6 +25,19 @@ const Blogs = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
+
+    useEffect(() => {
+      gtag.event({
+        action: "Blogs_page_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Blogs Page",
+        content_category: "Landing"
+      });
+    }, []);
 
   return (
     <>

@@ -1,17 +1,40 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import Footer from './Footer';
+import { fbPixel, gtag } from '@/lib/analytics';
 
 export default function ContactUsPage() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        email: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState('');
+    const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+    useEffect(() => {
+        gtag.event({
+          action: "contact_us_page_visit",
+          category: "navigation",
+          label: "Landing Page"
+        });
+    
+        fbPixel.event("ViewContent", {
+          content_name: "Contact Us Page",
+          content_category: "Landing"
+        });
+    }, []);
+
     const router = useRouter();
     
     // This function will be called when the reCAPTCHA is verified
     const handleRecaptchaChange = (token) => {
         console.log('reCAPTCHA token:', token);
-        // You can store the token in state or form data here
+        setRecaptchaToken(token);
     };
 
     // Load reCAPTCHA script
@@ -23,8 +46,8 @@ export default function ContactUsPage() {
                     window.grecaptcha.render('recaptcha-container', {
                         sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || 'your_site_key',
                         callback: handleRecaptchaChange,
-                        'expired-callback': () => handleRecaptchaChange(null),
-                        'error-callback': () => handleRecaptchaChange(null),
+                        'expired-callback': () => setRecaptchaToken(null),
+                        'error-callback': () => setRecaptchaToken(null),
                     });
                 });
             }
@@ -46,11 +69,63 @@ export default function ContactUsPage() {
         };
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you would normally verify the reCAPTcha token with your backend
-        // before processing the form submission
-        alert('Form submitted! (In a real app, verify reCAPTCHA first)');
+        
+        if (!recaptchaToken) {
+            setSubmitStatus('Please complete the reCAPTCHA verification');
+            return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitStatus('');
+
+        try {
+            // Submit to Formspree
+            const formDataToSend = new FormData();
+            formDataToSend.append("firstName", formData.firstName);
+            formDataToSend.append("email", formData.email);
+            formDataToSend.append("message", formData.message);
+            formDataToSend.append("g-recaptcha-response", recaptchaToken);
+
+            const response = await fetch("https://formspree.io/f/mkgqnggr", {
+                method: "POST",
+                body: formDataToSend,
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                // Reset form
+                setFormData({
+                    firstName: '',
+                    email: '',
+                    message: ''
+                });
+                // Reset reCAPTCHA
+                if (window.grecaptcha) {
+                    window.grecaptcha.reset();
+                }
+                setRecaptchaToken(null);
+            } else {
+                setSubmitStatus('Error sending message. Please try again.');
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setSubmitStatus('Error sending message. Please try again.');
+        }
+
+        setIsSubmitting(false);
     };
 
     return (
@@ -113,9 +188,13 @@ export default function ContactUsPage() {
                                             </label>
                                             <input 
                                                 type="text" 
+                                                name="firstName"
+                                                value={formData.firstName}
+                                                onChange={handleInputChange}
                                                 placeholder="Ex: John"
                                                 className="w-full px-4 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none text-gray-700 bg-white"
                                                 required
+                                                disabled={isSubmitting}
                                             />
                                         </div>
                                         <div>
@@ -124,9 +203,13 @@ export default function ContactUsPage() {
                                             </label>
                                             <input 
                                                 type="email" 
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
                                                 placeholder="Ex: john@abc.com"
                                                 className="w-full px-4 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none text-gray-700 bg-white"
                                                 required
+                                                disabled={isSubmitting}
                                             />
                                         </div>
                                     </div>
@@ -138,24 +221,50 @@ export default function ContactUsPage() {
                                         </label>
                                         <textarea 
                                             rows="6"
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleInputChange}
                                             placeholder="Enter your message..."
                                             className="w-full px-4 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none resize-vertical text-gray-700 bg-white"
                                             required
+                                            disabled={isSubmitting}
                                         ></textarea>
                                     </div>
 
                                     {/* reCAPTCHA Section */}
-                                    <div className="flex ">
+                                    <div className="flex">
                                         <div id="recaptcha-container"></div>
                                     </div>
+
+                                    {/* Status Message */}
+                                    {submitStatus && (
+                                        <div className={`p-4 rounded-lg ${
+                                            submitStatus === 'success' 
+                                                ? 'bg-green-100 text-green-800' 
+                                                : 'bg-red-100 text-red-800'
+                                        }`}>
+                                            {submitStatus === 'success' 
+                                                ? '✅ Message sent successfully! We\'ll get back to you soon.' 
+                                                : submitStatus
+                                            }
+                                        </div>
+                                    )}
 
                                     {/* Submit Button */}
                                     <div className="pt-4">
                                         <button 
                                             type="submit"
-                                            className="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors text-lg"
+                                            disabled={isSubmitting || !recaptchaToken}
+                                            className="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
                                         >
-                                            Send Message
+                                            {isSubmitting ? (
+                                                <>
+                                                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                                                    Sending...
+                                                </>
+                                            ) : (
+                                                'Send Message'
+                                            )}
                                         </button>
                                     </div>
                                 </form>
@@ -165,9 +274,7 @@ export default function ContactUsPage() {
                 </section>
             </div>
 
-
             <Footer/>
-
         </>
     );
 }

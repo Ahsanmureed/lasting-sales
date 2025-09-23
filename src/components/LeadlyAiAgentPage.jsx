@@ -1,9 +1,23 @@
 // pages/index.js
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
+import { fbPixel, gtag } from '@/lib/analytics';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 export default function AiAgent() {
+    useEffect(() => {
+      gtag.event({
+        action: "leadly_ai_agent_visit",
+        category: "navigation",
+        label: "Landing Page"
+      });
+  
+      fbPixel.event("ViewContent", {
+        content_name: "Leadly Ai Agent Page",
+        content_category: "Landing"
+      });
+    }, []);
   return (
    <>
 
@@ -82,7 +96,7 @@ export default function AiAgent() {
         height={550}
         className="w-full max-w-[550px] h-auto"
       />
-      <button className="mt-6 bg-[#FF8200] text-white px-6 py-2 rounded hover:bg-[#e67300] transition">
+      <button className="mt-6 cursor-pointer bg-[#FF8200] text-white px-6 py-2 rounded hover:bg-[#e67300] transition">
         Book a Call
       </button>
     </div>
