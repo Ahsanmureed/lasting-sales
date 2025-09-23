@@ -1,4 +1,5 @@
 // pages/index.js
+'use client';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import { fbPixel, gtag } from '@/lib/analytics';
