@@ -1,10 +1,10 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { gtag, fbPixel } from "@/lib/analytics";
 
-export function AnalyticsProvider() {
+function AnalyticsTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -16,4 +16,12 @@ export function AnalyticsProvider() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export function AnalyticsProvider() {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsTracker />
+    </Suspense>
+  );
 }
