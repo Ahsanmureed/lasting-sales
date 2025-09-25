@@ -67,7 +67,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4 text-sm">
               <li>
-                <Link href="/about" className="hover:text-teal-600 transition-colors">
+                <Link href="/about-us" className="hover:text-teal-600 transition-colors">
                   About Us
                 </Link>
               </li>
@@ -135,12 +135,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-teal-600 transition-colors">
+                <Link href="/privacy-policy" className="hover:text-teal-600 transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-teal-600 transition-colors">
+                <Link href="/contact-us" className="hover:text-teal-600 transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -155,7 +155,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-gray-600">
-              Copyright © 2024 LastingSales LTD. All rights reserved.
+              Copyright © 2025 LastingSales LTD. All rights reserved.
             </div>
             
             {/* Social Media Icons */}

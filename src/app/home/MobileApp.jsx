@@ -75,13 +75,13 @@ const DesignedFor = () => {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="#"
+              href="https://live.lastingsales.com/en/register"
               className="bg-[#059671] hover:text-black text-white font-semibold py-3 px-6 rounded-md transition"
             >
               Try it Free
             </Link>
             <Link
-              href="#"
+              href="https://calendly.com/kashif-lastingsales/30min"
               className="bg-[#FF8B07] hover:text-black text-white font-semibold py-3 px-6 rounded-md transition"
             >
               Book a Call
@@ -136,7 +136,7 @@ const DesignedFor = () => {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="#"
+              href="https://live.lastingsales.com/en/register"
               className="bg-[#059671] hover:text-black text-white font-semibold py-3 px-6 rounded-md transition"
             >
               Try it Free

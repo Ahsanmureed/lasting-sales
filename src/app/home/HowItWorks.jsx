@@ -19,7 +19,7 @@ What if you miss timely follow-ups and lose a potential lead?
          No worries, we’ve got you covered! With LastingSales, you can write follow-up notes and share them with your sales reps to ensure timely responses. Easily assign leads coming from Facebook Ads and websites to the best-suited sales agent. This way, you can follow up with every potential lead on time and in the best possible way.
           </p>
           <a
-            href="#"
+            href="https://live.lastingsales.com/en/register"
             className="inline-block bg-[#059671] text-white px-6 py-3 rounded-md font-medium hover:text-black transition"
           >
             Try it free

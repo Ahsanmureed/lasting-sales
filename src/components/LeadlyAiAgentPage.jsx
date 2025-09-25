@@ -4,9 +4,11 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import { fbPixel, gtag } from '@/lib/analytics';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function AiAgent() {
+  const router = useRouter();
     useEffect(() => {
       gtag.event({
         action: "leadly_ai_agent_visit",
@@ -19,6 +21,11 @@ export default function AiAgent() {
         content_category: "Landing"
       });
     }, []);
+    
+ const handleBtn = () => {
+    router.push('https://live.lastingsales.com/en/register');
+  };
+
   return (
    <>
 
@@ -32,7 +39,8 @@ export default function AiAgent() {
         <p className="text-gray-700 text-lg mb-6">
           Convert leads faster. Reduce human effort. Let AI handle the first move
         </p>
-        <button className="bg-[#00B386] text-white px-6 py-2 rounded hover:bg-[#009966] transition">
+        <button               onClick={handleBtn}
+ className="bg-[#00B386] text-white px-6 py-2 rounded hover:bg-[#009966] transition">
           Try it free
         </button>
       </section>
@@ -48,7 +56,8 @@ export default function AiAgent() {
             Whether you’re generating leads from <b>Facebook Ads</b>, <b>WhatsApp</b>, <b>websites</b>, or <b>phone calls</b>,
             Leadly handles them all — with no delay, no missed opportunity.
           </p>
-          <button className="bg-[#00B386] text-white px-6 py-2 rounded hover:bg-[#009966] transition">
+          <button               onClick={handleBtn}
+ className="bg-[#00B386] text-white px-6 py-2 rounded hover:bg-[#009966] transition">
             Try it free
           </button>
         </div>
@@ -97,7 +106,7 @@ export default function AiAgent() {
         height={550}
         className="w-full max-w-[550px] h-auto"
       />
-      <button className="mt-6 cursor-pointer bg-[#FF8200] text-white px-6 py-2 rounded hover:bg-[#e67300] transition">
+      <button onClick={()=> router.push('https://calendly.com/kashif-lastingsales/30min')} className="mt-6 cursor-pointer bg-[#FF8200] text-white px-6 py-2 rounded hover:bg-[#e67300] transition">
         Book a Call
       </button>
     </div>

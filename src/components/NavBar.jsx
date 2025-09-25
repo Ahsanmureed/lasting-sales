@@ -77,12 +77,12 @@ const NavBar = () => {
               </div>
             </div>
 
-            {/* <Link 
+            <Link 
               href="/marketing-plan" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               Marketing Plan
-            </Link> */}
+            </Link>
             <Link 
               href="/blogs" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"

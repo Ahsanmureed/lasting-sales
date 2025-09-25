@@ -9,19 +9,19 @@ const DesignedFor = () => {
       img: "/13-300x300.png",
       title: "For Estate Agents",
       desc: "Respond quickly and do follow-ups to potential leads",
-      link: "#"
+      link: "/crm-for-estate-agents"
     },
     {
       img: "/14-300x300.png",
       title: "For Coaches",
       desc: "Attract students from different marketing channels",
-      link: "#"
+      link: "/educational-trainers-coaches"
     },
     {
       img: "/15-300x300.png",
       title: "For Digital Agencies",
       desc: "Attract and retain customers in your sales pipeline",
-      link: "#"
+      link: "/marketing-agencies"
     },
   ];
 

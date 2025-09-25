@@ -7,7 +7,14 @@ import { Calendar, Database, Share2, Tablet,DollarSign, ClipboardList, CheckSqua
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { fbPixel, gtag } from "@/lib/analytics";
+import { useRouter } from "next/navigation";
+import LeadProfile from "./LeadProfile";
 export default function Hero() {
+  const router = useRouter();
+   const handleBtn = () => {
+    router.push('https://live.lastingsales.com/en/register');
+  };
+
     useEffect(() => {
       gtag.event({
         action: "estate_agent_page_visit",
@@ -99,7 +106,8 @@ export default function Hero() {
           assign these leads to your sales team, and see the complete sales
           progress on all the leads with LastingSales!
         </p>
-        <button className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition">
+        <button               onClick={handleBtn}
+ className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition">
           Try it free
         </button>
 
@@ -193,6 +201,7 @@ export default function Hero() {
     </div>
   </div>
 </section>
+<LeadProfile/>
 <Footer/>
 
   </>

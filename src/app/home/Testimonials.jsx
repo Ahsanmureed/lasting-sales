@@ -26,7 +26,7 @@ const FollowUpSection = () => {
           It’s essential to know how your sales team is handling potential clients so you can offer guidance and improve where needed. With LastingSales, you get a clear view of deal statuses—whether won, lost, or still negotiating—and see how many follow-ups have been made. You can also access detailed call summaries and recordings with potential clients. Exciting, right?
           </p>
           <a
-            href="#"
+            href="https://live.lastingsales.com/en/register"
             className="inline-block bg-[#059671] text-white px-6 py-3 rounded-md font-medium hover:text-black transition"
           >
             Try it free
