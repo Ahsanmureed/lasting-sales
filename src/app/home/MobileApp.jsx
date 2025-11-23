@@ -147,16 +147,14 @@ const DesignedFor = () => {
           </div>
 
         {/* LEFT SIDE - Video */}
-  <div className="relative w-full lg:w-1/2 flex justify-center">
-            <Image
-              src="/Web-Content-1536x1196.png"
-              alt="LastingSales Mobile App"
-              width={750}
-              height={750}
-              className="rounded-xl max-w-full h-auto"
-            />
-         
-        </div>
+<div className="relative w-full lg:w-1/2 flex justify-center">
+  <img
+    src="/animated gif.gif"
+    alt="Animated GIF"
+    className="rounded-xl w-[25vw] max-w-full h-auto"
+  />
+</div>
+
 </div>
       </section>
 
