@@ -1,4 +1,6 @@
 'use client';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/NavBar';
 import React, { useState } from 'react';
 
 const PricingCards = () => {
@@ -81,7 +83,9 @@ const PricingCards = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+<>
+<NavBar/>
+    <div className="container mx-auto px-4 py-12 pt-30">
 
       {/* ⭐ Updated to 3 cards per row on large screens */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
@@ -179,6 +183,9 @@ const PricingCards = () => {
       )}
 
     </div>
+
+    <Footer/>
+</>
   );
 };
 
