@@ -1,117 +1,185 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useState } from 'react';
 
-const Pricing = () => {
-  const router = useRouter();
-  const handleBtn  = ()=>{
- router.push('https://live.lastingsales.com/en/register')
-  }
+const PricingCards = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('');
+
   const plans = [
     {
-      name: "Monthly Plan",
-      price: "$12/per user",
-      period: "/month",
+      id: 3,
+      name: 'Free',
+      price: 'Free',
+      span: '14 days trial',
+      theme: '#FF8B07',
+      bg: '#FFF6EE',
       features: [
-      "Unlimited Leads",
-"10 Sales Pipelines & Stages",
-"1 GB Files storage",
-"Facebook Lead Ads & Web Forms Integration"
-      ],
-      popular: false,
-      buttonText: "Try it free"
+        'Deals: 1000',
+        'Custom Fields: 50',
+        'free trial: 14',
+        'Leads: 1000',
+        'Stages: 50',
+        'Users: 20',
+        'Pipelines: 10'
+      ]
     },
     {
-      name: "Professional", 
-      price: "$70/ per user",
-      period: "/month",
+      id: 1,
+      name: 'Monthly',
+      price: 12,
+      span: 'Per Month',
+      theme: '#FF8B07',
+      bg: '#FFF6EE',
       features: [
-       " Unlimited Leads",
-"15 Sales Pipelines & Stages",
-"2 GB Files storage",
-"Facebook Lead Ads & Web Forms Integration"
-      ],
-      popular: true,
-      buttonText: "Try it free"
+        'Unlimited lead',
+        'Unlimited deal',
+        'Unlimited workflow',
+        'Unlimited stage',
+        'Unlimited dynamic column',
+        '100GB file',
+        'Facebook & Website Integration',
+        'Calls data integration'
+      ]
     },
-  ]
+    {
+      id: 2,
+      name: 'Annually',
+      price: 108,
+      span: 'Per Year',
+      theme: '#02B388',
+      bg: '#E9FFF9',
+      features: [
+        'Unlimited lead',
+        'Unlimited deal',
+        'Unlimited workflow',
+        'Unlimited stage',
+        'Unlimited dynamic column',
+        '100GB file',
+        'Facebook & Website Integration',
+        'Calls data integration'
+      ]
+    }
+  ];
+
+  const handleGetStarted = () => {
+    window.location.href = 'http://live.lastingsales.com/';
+  };
+
+  const handleCancelSubscription = (planName) => {
+    setSelectedPlan(planName);
+    setOpenDialog(true);
+  };
+
+  const closeDialog = () => {
+    setOpenDialog(false);
+    setSelectedPlan('');
+  };
+
+  const confirmCancel = () => {
+    console.log(`Cancelling subscription for ${selectedPlan}`);
+    closeDialog();
+  };
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Simple, <span className="text-emerald-600">transparent</span> pricing
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose the plan that fits your business. All plans include a 14-day free trial.
-            No setup fees, no hidden costs.
-          </p>
-        </div>
+    <div className="container mx-auto px-4 py-8">
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {plans.map((plan, index) => (
-            <div 
-              key={index} 
-              className={` rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 relative ${
-                plan.popular ? 'bg-[#E6F8F3] ' : 'bg-white'
-              }`}
+      {/* ⭐ Updated to 3 cards per row on large screens */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className="rounded-xl shadow-md bg-white max-w-sm w-full pb-6"
+            style={{ border: `2px solid ${plan.theme}` }}
+          >
+            {/* Header */}
+            <div
+              className="text-center py-5 rounded-t-xl border-b"
+              style={{
+                background: plan.bg,
+                borderColor: plan.theme
+              }}
             >
-             
-              
-              {/* Plan Name */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {plan.name}
-              </h3>
-              
-              {/* Price */}
-              <div className="mb-4">
-                <span className="text-4xl font-bold text-gray-900">
-                  {plan.price}
-                </span>
-                <span className="text-gray-600">
-                  {plan.period}
-                </span>
-              </div>
-              
-              {/* Description */}
-              <p className="text-gray-600 mb-6">
-                {plan.description}
-              </p>
-              
-              {/* Features */}
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center">
-                    <span className="text-emerald-600 mr-3">✓</span>
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              {/* CTA Button */}
-              <button 
-              onClick={handleBtn}
-                className={`w-full cursor-pointer font-medium px-6 py-3 rounded-lg transition-all duration-200 ${
-                  plan.popular 
-                    ? 'text-white hover:opacity-90' 
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-                style={plan.popular ? { backgroundColor: '#059574' } : {}}
+              <h2
+                className="text-2xl font-bold"
+                style={{ color: plan.theme }}
               >
-                {plan.buttonText}
+                {plan.name} Plan
+              </h2>
+              <p className="text-gray-500 text-sm mt-1">{plan.span}</p>
+            </div>
+
+            {/* Price */}
+            <div className="text-center mt-4">
+              <p
+                className="text-4xl font-bold"
+                style={{ color: plan.theme }}
+              >
+                ${plan.price}
+              </p>
+              <p className="text-gray-500 text-sm mt-1">per user</p>
+            </div>
+
+            {/* Button */}
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => handleGetStarted(plan.name)}
+                className="px-6 py-2 text-white rounded-lg transition font-medium"
+                style={{ background: plan.theme }}
+              >
+                Get Started
               </button>
             </div>
-          ))}
-        </div>
 
-      
+            {/* Features (2 columns) */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 px-6">
+              {plan.features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-2">
+                  <span className="text-lg" style={{ color: plan.theme }}>
+                    ✔
+                  </span>
+                  <span className="text-gray-700 text-sm">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        ))}
       </div>
-    </section>
-  )
-}
 
-export default Pricing
+      {/* Dialog */}
+      {openDialog && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">
+              Cancel Subscription
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to cancel your
+              <strong> {selectedPlan} </strong>
+              subscription?
+            </p>
 
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={closeDialog}
+                className="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition"
+              >
+                No, Keep It
+              </button>
+
+              <button
+                onClick={confirmCancel}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+              >
+                Yes, Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+export default PricingCards;

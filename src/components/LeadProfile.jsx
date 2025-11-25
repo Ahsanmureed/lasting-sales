@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Pricing from "@/app/home/Pricing";
+import { CheckCircle } from "lucide-react";
 
 const LeadProfile = () => {
   return (
@@ -8,13 +9,14 @@ const LeadProfile = () => {
       {/* Section 1 */}
       <div className="bg-[#E6F8F3] flex items-center py-12 md:py-20">
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6">
+          
           {/* Left Image */}
           <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
             <Image
               src={"/4-5.png"}
-              width={700}
-              height={200}
-              className="w-full h-auto max-w-md md:max-w-lg"
+              width={900}
+              height={400}
+              className="w-full h-auto max-w-lg md:max-w-2xl"
               alt="Lead Profile"
             />
           </div>
@@ -41,7 +43,7 @@ const LeadProfile = () => {
                   key={i}
                   className="bg-white rounded-xl px-6 py-3 flex items-center gap-3 shadow"
                 >
-                  <span className="text-[#059671] text-xl">✔</span>
+                  <CheckCircle className="text-[#059671]" size={22} />
                   <p>{item}</p>
                 </div>
               ))}
@@ -63,6 +65,7 @@ const LeadProfile = () => {
       {/* Section 2 */}
       <div className="bg-[#FDF1DF] flex items-center py-12 md:py-20">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-6">
+
           {/* Left Content */}
           <div className="text-center md:text-left max-w-xl">
             <h1 className="text-[#FF8B07] text-3xl md:text-4xl font-bold leading-snug">
@@ -86,7 +89,7 @@ const LeadProfile = () => {
                   key={i}
                   className="bg-white rounded-xl px-6 py-3 flex items-center gap-3 shadow"
                 >
-                  <span className="text-[#FF8B07] text-xl">✔</span>
+                  <CheckCircle className="text-[#FF8B07]" size={22} />
                   <p>{item}</p>
                 </div>
               ))}
@@ -107,9 +110,9 @@ const LeadProfile = () => {
           <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
             <Image
               src={"/4-5.png"}
-              width={700}
-              height={200}
-              className="w-full h-auto max-w-md md:max-w-lg"
+              width={900}
+              height={400}
+              className="w-full h-auto max-w-lg md:max-w-2xl"
               alt="Pipeline Stages"
             />
           </div>
