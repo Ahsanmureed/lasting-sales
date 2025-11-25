@@ -16,7 +16,7 @@ const NavBar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    setOpenDropdown(null); // Reset dropdown when toggling menu
+    setOpenDropdown(null);
   };
 
   const toggleDropdown = (dropdown) => {
@@ -24,20 +24,19 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white fixed w-full shadow-sm border-b border-gray-200 z-50">
+    <nav className="bg-white fixed w-full shadow-sm border-b border-gray-200 z-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
-          <div onClick={()=> router.push('/')} className="flex cursor-pointer items-center space-x-1">
+          <div onClick={()=> router.push('/')} className="flex cursor-pointer items-center space-x-1 flex-shrink-0">
             <Image 
               src={logo} 
               alt="Lasting Sales Logo" 
               width={65} 
               height={65}
-              
             />
-            <span className="text-[23px] font-[600] text-[#494748]">
-              Lasting<span className=' text-[#686767]'>Sales</span>
+            <span className="text-[23px] font-[600] text-[#494748] whitespace-nowrap">
+              Lasting<span className='text-[#686767]'>Sales</span>
             </span>
           </div>
 
@@ -46,7 +45,7 @@ const NavBar = () => {
             {/* Product Dropdown */}
             <div className="relative group">
               <div className="flex items-center py-4">
-                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 whitespace-nowrap">
                   Product
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -62,7 +61,7 @@ const NavBar = () => {
             {/* Company Dropdown */}
             <div className="relative group">
               <div className="flex items-center py-4">
-                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 whitespace-nowrap">
                   Company
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -79,7 +78,7 @@ const NavBar = () => {
             {/* Industries Dropdown */}
             <div className="relative group">
               <div className="flex items-center py-4">
-                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 whitespace-nowrap">
                   Industries
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -95,14 +94,14 @@ const NavBar = () => {
 
             <Link 
               href="/marketing-plan" 
-              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
+              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4 whitespace-nowrap"
             >
               #DeepSalesWork
             </Link>
             
             <Link 
               href="/pricing" 
-              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
+              className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4 whitespace-nowrap"
             >
               Pricing
             </Link>
@@ -110,7 +109,7 @@ const NavBar = () => {
             {/* Resources Dropdown */}
             <div className="relative group">
               <div className="flex items-center py-4">
-                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200">
+                <button className="flex items-center text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 whitespace-nowrap">
                   Resources
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -118,18 +117,17 @@ const NavBar = () => {
                 </button>
               </div>
               <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
-
                 <Link href="/resources" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">E-Books</Link>
-                                <Link href="/blogs" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Blog</Link>
+                <Link href="/blogs" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Blog</Link>
               </div>
             </div>
           </div>
 
           {/* Try it Free Button */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center flex-shrink-0">
             <button 
               onClick={handleBtn}
-              className="text-white  cursor-pointer font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82]"
+              className="text-white cursor-pointer font-semibold px-3 py-2 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-[#1E9F82] whitespace-nowrap"
               style={{ backgroundColor: '#059574' }}
             >
               Try it free
@@ -137,7 +135,7 @@ const NavBar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center flex-shrink-0">
             <button 
               onClick={toggleMobileMenu}
               className="text-gray-700 hover:text-[#1E9F82] focus:outline-none"
