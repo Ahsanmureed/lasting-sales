@@ -45,7 +45,7 @@ const HomePage = () => {
       <MobileApp/>
       <AchevieMents/>
       <CustomersSaying/>
-      <Pricing/>
+      {/* <Pricing/> */}
       <Footer/>
     </>
   )
