@@ -12,7 +12,7 @@ import Footer from '@/components/Footer'
 import AchevieMents from './AchevieMents'
 import Addittional from './Addittional'
 import CustomersSaying from './CustomersSaying'
-
+import Video from './Video'
 import { gtag, fbPixel } from "@/lib/analytics"
 
 export const metadata = {
@@ -38,11 +38,12 @@ const HomePage = () => {
       <NavBar/>
       <Hero/>
       <Designed/>
+        <Video/>
       <HowItWorks/>
       <Testimonials/>
       <Addittional/>
       <Features/>
-      <MobileApp/>
+    <MobileApp/>
       <AchevieMents/>
       <CustomersSaying/>
       {/* <Pricing/> */}

@@ -32,22 +32,22 @@ const LeadProfile = () => {
             </h5>
 
             {/* Features */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                "Conversation between Sales Rep",
-                "No of Deals",
-                "Calls, Notes, and Follow-ups",
-                "Custom Data Fields",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-xl px-6 py-3 flex items-center gap-3 shadow"
-                >
-                  <CheckCircle className="text-[#059671]" size={22} />
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
+       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {[
+    "Conversation between Sales Rep",
+    "No of Deals",
+    "Calls, Notes, and Follow-ups",
+    "Custom Data Fields",
+  ].map((item, i) => (
+    <div
+      key={i}
+      className="bg-white rounded-xl px-6 py-3 flex items-center gap-3 shadow"
+    >
+      <CheckCircle className="text-[#059671] flex-shrink-0" size={22} />
+      <p>{item}</p>
+    </div>
+  ))}
+</div>
 
             {/* Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4">

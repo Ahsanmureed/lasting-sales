@@ -162,15 +162,15 @@ export default function ContactUsPage() {
                             <div>
                                 <h3 className="text-2xl font-bold text-teal-600 mb-4">Office Address</h3>
                                 <p className="text-gray-700 text-lg">
-                                    Mincing Lane, Rowley Regis<br />
-                                    England, B65 9QD
+                                    
+                                    Castlegate Park, Birmingham Rd, Dudley<br /> DY1 4TB United Kingdom.
                                 </p>
                             </div>
 
                             {/* Get In Touch */}
                             <div>
                                 <h3 className="text-2xl font-bold text-teal-600 mb-4">Get In Touch</h3>
-                                <p className="text-gray-700 text-lg">+44 7507 30 5810</p>
+                                <p className="text-gray-700 text-lg">+44 7507 30 5610</p>
                             </div>
                         </div>
 
@@ -184,7 +184,7 @@ export default function ContactUsPage() {
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <div>
                                             <label className="block text-sm font-semibold text-gray-700 mb-3">
-                                                First Name *
+                                                Name *
                                             </label>
                                             <input 
                                                 type="text" 

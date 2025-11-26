@@ -72,7 +72,7 @@ const NavBar = () => {
               <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
                 <Link href="/about-us" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">About Us</Link>
                 <Link href="/contact-us" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Contact Us</Link>
-                <Link href="/leadly-ai-agent" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Leadly AI Agent</Link>
+             
               </div>
             </div>
 
@@ -87,14 +87,15 @@ const NavBar = () => {
                 </button>
               </div>
               <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
-                <Link href="/crm-for-estate-agents" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Estate Agents</Link>
+                <Link href="/crm-for-estate-agents" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Real Estate</Link>
+                                <Link href="/marketing-agencies" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Marketing Agencies</Link>
                 <Link href="/educational-trainers-coaches" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Educational Coaches</Link>
-                <Link href="/marketing-agencies" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Marketing Agencies</Link>
+
               </div>
             </div>
 
             <Link 
-              href="/marketing-plan" 
+              href="/deep-sales-work" 
               className="text-gray-700 hover:text-[#1E9F82] font-medium transition-colors duration-200 py-4"
             >
               #DeepSalesWork
@@ -198,7 +199,7 @@ const NavBar = () => {
                 <div className="pl-4 py-2 space-y-1">
                   <Link href="/about-us" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">About Us</Link>
                   <Link href="/contact-us" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Contact Us</Link>
-                  <Link href="/leadly-ai-agent" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Leadly AI Agent</Link>
+                
                 </div>
               )}
             </div>
@@ -229,7 +230,7 @@ const NavBar = () => {
             </div>
 
             <Link 
-              href="/marketing-plan" 
+              href="/deep-sales-work" 
               className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82] font-medium"
               onClick={toggleMobileMenu}
             >
