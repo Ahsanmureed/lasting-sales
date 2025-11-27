@@ -55,7 +55,7 @@ const NavBar = () => {
               </div>
               <div className="absolute left-0 top-full pt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible border border-gray-100">
                 <Link href="/leadly-ai-agent" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Leadly AI Agent</Link>
-                <Link href="/mobile-crm" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Mobile CRM</Link>
+                <Link href="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#1E9F82]">Mobile CRM</Link>
               </div>
             </div>
 
@@ -174,7 +174,7 @@ const NavBar = () => {
               {openDropdown === 'product' && (
                 <div className="pl-4 py-2 space-y-1">
                   <Link href="/leadly-ai-agent" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Leadly AI Agent</Link>
-                  <Link href="/mobile-crm" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Mobile CRM</Link>
+                  <Link href="/" className="block px-3 py-2 text-gray-700 hover:text-[#1E9F82]">Mobile CRM</Link>
                 </div>
               )}
             </div>
