@@ -31,19 +31,7 @@ export default function AiAgent() {
 
    <NavBar/>
     <div className="font-sans text-[#333]">
-      {/* Hero Section */}
-      <section className="text-center pt-40 bg-white py-20 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#00B386] mb-4">
-          Meet Leadly — Your AI Sales Agent
-        </h1>
-        <p className="text-gray-700 text-lg mb-6">
-          Convert leads faster. Reduce human effort. Let AI handle the first move
-        </p>
-        <button               onClick={handleBtn}
- className="bg-[#00B386] text-white px-6 py-2 rounded hover:bg-[#009966] transition">
-          Try it free
-        </button>
-      </section>
+   
 
       {/* What is Leadly Section */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between py-20 px-6 md:px-24 bg-[#F8FCFC] gap-12">
