@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import bg from '../../../public/1209.jpg'
@@ -10,10 +10,185 @@ import img3 from '../../../public/green-flow.jpg'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 
+// Modal Form Component
+const ContactModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    website: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('https://formspree.io/f/mkgqnggr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', phone: '', website: '' })
+        setTimeout(() => {
+          onClose()
+          setIsSubmitted(false)
+        }, 2000)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Blurred Background */}
+      <div className="absolute inset-0  bg-opacity-80 backdrop-blur-sm" onClick={onClose}></div>
+      
+      {/* Modal Content */}
+      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-auto transform transition-all">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-2xl font-bold" style={{ color: '#009966' }}>
+              Contact Us
+            </h3>
+            <button
+              onClick={onClose}
+              className="text-gray-500 cursor-pointer hover:text-gray-700 text-2xl font-bold transition-colors duration-200"
+            >
+              ×
+            </button>
+          </div>
+
+          {isSubmitted ? (
+            <div className="text-center py-8">
+              <div className="text-green-500 text-6xl mb-4">✓</div>
+              <p className="text-xl font-semibold text-gray-800">
+                Thank you for your submission!
+              </p>
+              <p className="text-gray-600 mt-2">
+                We'll get back to you soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  placeholder="Your phone number"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
+                  Website URL
+                </label>
+                <input
+                  type="url"
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  placeholder="https://example.com"
+                />
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="flex-1 cursor-pointer px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors duration-200 font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 px-4 py-2 text-white cursor-pointer rounded-md font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ backgroundColor: '#009966' }}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const Page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
+
   return (
     <>
       <NavBar/>
+      
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       
       {/* Hero Section with Background Image */}
       <div className="relative flex items-center justify-center overflow-hidden">
@@ -122,11 +297,13 @@ const Page = () => {
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 <strong>Here lies the paradox of sales professionals:</strong> it's the salesperson's job to bring in new customers, but the majority of the work distracts us from that goal.
               </p>
-              <Link href="https://live.lastingsales.com/en/register" target="_blank" rel="noopener noreferrer">
-                <button className="px-8 py-4 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" style={{ backgroundColor: '#FF8200' }}>
-                  Join the Deep Sales Movement
-                </button>
-              </Link>
+              <button 
+                onClick={openModal}
+                className="px-8 py-4 text-white cursor-pointer font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
+                style={{ backgroundColor: '#FF8200' }}
+              >
+                Join the Deep Sales Movement
+              </button>
             </div>
             <div className="relative h-96 md:h-full min-h-[400px]">
               <Image 
@@ -184,13 +361,15 @@ const Page = () => {
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 Regardless of the task, this hour of work each morning sets the tone for the day. It also gives you the confidence to focus on client outreach for the remainder of the day, knowing that you've already made progress on valuable projects.
               </p>
-              <Link href="https://live.lastingsales.com/en/register" target="_blank" rel="noopener noreferrer">
-                <button className="px-8 py-4 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" style={{ backgroundColor: '#009966' }}>
-                  Start your Deep Sales Journey
-                </button>
-              </Link>
+              <button 
+                onClick={openModal}
+                className="px-8 py-4 text-white cursor-pointer font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
+                style={{ backgroundColor: '#009966' }}
+              >
+                Start your Deep Sales Journey
+              </button>
             </div>
-            <div className="relative h-96 md:h-full min-h-[400px]">
+            <div className="relative cursor-pointer h-96 md:h-full min-h-[400px]">
               <Image 
                 src={img2}
                 alt="Rhythmic Style"
@@ -300,11 +479,13 @@ const Page = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Is your Sales team ready for #DeepSalesWork?
           </h2>
-          <Link href="https://live.lastingsales.com/en/register" target="_blank" rel="noopener noreferrer">
-            <button className="px-10 py-5 text-lg font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105" style={{ backgroundColor: '#FF8200', color: 'white' }}>
-              Get Free Assessment
-            </button>
-          </Link>
+          <button 
+            onClick={openModal}
+            className="px-10 py-5 text-lg font-semibold cursor-pointer rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105" 
+            style={{ backgroundColor: '#FF8200', color: 'white' }}
+          >
+            Get Free Assessment
+          </button>
         </div>
       </section>
       
