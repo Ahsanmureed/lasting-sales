@@ -16,16 +16,28 @@ const ContactModal = ({ isOpen, onClose }) => {
     name: '',
     email: '',
     phone: '',
-    website: ''
+    website: '',
+    social: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    
+    // Only allow numbers for phone field
+    if (name === 'phone') {
+      const numbersOnly = value.replace(/[^0-9]/g, '')
+      setFormData({
+        ...formData,
+        [name]: numbersOnly
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      })
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -43,7 +55,7 @@ const ContactModal = ({ isOpen, onClose }) => {
 
       if (response.ok) {
         setIsSubmitted(true)
-        setFormData({ name: '', email: '', phone: '', website: '' })
+        setFormData({ name: '', email: '', phone: '', website: '', social: '' })
         setTimeout(() => {
           onClose()
           setIsSubmitted(false)
@@ -61,14 +73,14 @@ const ContactModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Blurred Background */}
-      <div className="absolute inset-0  bg-opacity-80 backdrop-blur-sm" onClick={onClose}></div>
+      <div className="absolute inset-0 bg-opacity-80 backdrop-blur-sm" onClick={onClose}></div>
       
       {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-auto transform transition-all">
+      <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full mx-auto transform transition-all">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-bold" style={{ color: '#009966' }}>
-              Contact Us
+            <h3 className="text-2xl font-normal" style={{ color: '#009966' }}>
+         Get a <span className='font-bold'>free</span> assessment of your <span className='font-bold'>Sales Process</span> readiness for #DeepSalesWork
             </h3>
             <button
               onClick={onClose}
@@ -92,7 +104,7 @@ const ContactModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name *
+                 Full Name *
                 </label>
                 <input
                   type="text"
@@ -124,7 +136,7 @@ const ContactModal = ({ isOpen, onClose }) => {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
+                  Phone
                 </label>
                 <input
                   type="tel"
@@ -142,7 +154,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                   Website URL
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   id="website"
                   name="website"
                   value={formData.website}
@@ -152,21 +164,29 @@ const ContactModal = ({ isOpen, onClose }) => {
                 />
               </div>
 
+              <div>
+                <label htmlFor="social" className="block text-sm font-medium text-gray-700 mb-1">
+                  Facebook/Instagram 
+                </label>
+                <input
+                  type="text"
+                  id="social"
+                  name="social"
+                  value={formData.social}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  placeholder='Your social links'
+                />
+              </div>
+
               <div className="flex gap-3 pt-4">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="flex-1 cursor-pointer px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors duration-200 font-medium"
-                >
-                  Cancel
-                </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 px-4 py-2 text-white cursor-pointer rounded-md font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: '#009966' }}
+                  className="flex mx-auto px-4 py-2 text-white cursor-pointer rounded-md font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ backgroundColor: '#FF8200' }}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {isSubmitting ? 'Submitting...' : 'Get Free Assessment'}
                 </button>
               </div>
             </form>
