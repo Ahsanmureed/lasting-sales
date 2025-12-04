@@ -74,7 +74,7 @@ const Page = () => {
     const formData = new FormData(form)
     
     try {
-      const response = await fetch('https://getform.io/f/eapwqewb', {
+      const response = await fetch('https://getform.io/f/bjjdeynb', {
         method: 'POST',
         body: formData,
         headers: {

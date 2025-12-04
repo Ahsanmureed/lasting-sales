@@ -152,25 +152,7 @@ export default function Hero() {
     </section>
 
    <section className="bg-white py-16">
-  {/* Marketing Banner - Full Width */}
-  <div className="w-full px-6">
-    <div className="bg-green-50 rounded-xl p-6 mb-16 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
-      <div>
-        <Image width={320} height={220} src="/left.png" alt="left" />
-      </div>
-      <div className="text-center md:text-right">
-        <p className="text-[#2D3441] text-center text-[21px] font-medium mb-2">
-          Do you want to generate more leads?
-        </p>
-        <button className="px-6 py-3 flex text-[17px] mx-auto bg-[#00C696] text-white rounded-lg font-semibold hover:bg-green-600 transition">
-          Get your marketing plan
-        </button>
-      </div>
-      <div>
-        <Image width={320} height={220} src="/Right-1024x576.png" alt="right" />
-      </div>
-    </div>
-  </div>
+  
 
   {/* Benefits Section - 70% width */}
   <div className="w-[70%] mx-auto">

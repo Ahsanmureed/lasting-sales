@@ -38,12 +38,55 @@ const testimonials = [
     quote:
       'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
   },
+    {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/upscalemedia-transformed-4.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
+      {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/output-onlinepngtools.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
+       {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/connect-canada-immigration-consultant-logo.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
+       {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/kingslane.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
+
+       {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/Logo-png.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
+    {
+    name: 'Umair Satti',
+    company: 'CEO MyTrip.Pk',
+    logo: '/cropped-Matheaze-Logo-RED1.png',
+    quote:
+      'LastingSales helps us close more deals by enabling quick and easy contact with leads via WhatsApp or phone. We can reach out to them in just a few taps. Before that we used to manually save the number in phonebook by viewing it from the Excel. It saves a lot of time.',
+  },
 ];
 
 const CustomersSaying = () => {
   return (
-    <section className="bg-[#e6f7f2] py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+    <section className="bg-white py-16 overflow-hidden">
+      <div className="w-full px-6 text-center">
         <h2 className="text-3xl font-bold text-[#059671] mb-4">
           Our Customers 
         </h2>
@@ -52,19 +95,20 @@ const CustomersSaying = () => {
           education consulting, solar services, and more, who are running Facebook lead ads.
         </p>
 
-        <div className="relative">
-          <div className="flex animate-scroll">
+        <div className="relative overflow-hidden w-full">
+          <div className="flex animate-scroll" style={{ width: 'max-content' }}>
             {[...testimonials, ...testimonials].map((t, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-64 h-40 bg-white rounded-2xl shadow-md mx-4 flex items-center justify-center hover:shadow-lg transition p-4"
+                className="flex-shrink-0 w-48 h-24 mx-4 flex items-center justify-center"
               >
-                <div className="w-48 h-32 flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center">
                   <Image
                     src={t.logo}
                     alt={`${t.company} logo`}
                     width={192}
-                    height={128}
+                    height={96}
+                    unoptimized
                     className="object-contain w-full h-full"
                   />
                 </div>
@@ -84,7 +128,7 @@ const CustomersSaying = () => {
           }
         }
         .animate-scroll {
-          animation: scroll 20s linear infinite;
+          animation: scroll 45s linear infinite;
         }
         .animate-scroll:hover {
           animation-play-state: paused;

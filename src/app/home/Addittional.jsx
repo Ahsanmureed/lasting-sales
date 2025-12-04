@@ -40,8 +40,8 @@ import React from 'react'
               proves helpful!
             </p>
             
-            <Link href="/marketing-plan">
-              <button className="px-6 py-2.5 bg-[#FF8B07] text-white rounded-lg font-semibold transition hover:bg-[#e67d00] w-full sm:w-auto">
+            <Link href="/deep-sales-work">
+              <button className="px-6 cursor-pointer py-2.5 bg-[#FF8B07] text-white rounded-lg font-semibold transition hover:bg-[#e67d00] w-full sm:w-auto">
                 Learn More
               </button>
             </Link>
